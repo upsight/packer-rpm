@@ -1,11 +1,11 @@
 Name:           packer
-Version:        0.7.5
+Version:        0.10.1
 Release:        1%{?dist}
 Summary:        Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
 Group:          Applications/System
 License:        MPLv2.0
 URL:            https://packer.io/
-Source0:        https://dl.bintray.com/mitchellh/%{name}/%{name}_%{version}_linux_amd64.zip
+Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %if 0%{?fedora} >= 14 || 0%{?rhel} >= 7
@@ -36,5 +36,8 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Mon Jun 20 2016 Aaron Burt <aaron.burt@upsight.com>
+- v0.10.1
+- Source URL -> Hashicorp (Packer authors)
 * Wed Apr 29 2015 dan phrawzty <phrawzty@mozilla.com>
 - init v0.7.5
