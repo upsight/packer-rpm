@@ -7,6 +7,7 @@ License:        MPLv2.0
 URL:            https://packer.io/
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+%define	_prefix	/usr/local
 
 %if 0%{?fedora} >= 14 || 0%{?rhel} >= 7
 %endif
@@ -25,6 +26,7 @@ plugins.
 %install
 mkdir -p %{buildroot}/%{_bindir}
 cp %{name}* %{buildroot}/%{_bindir}
+ln -s %{name} %{buildroot}/%{_bindir}/%{name}-io
 
 %clean
 rm -rf %{buildroot}
@@ -39,5 +41,7 @@ rm -rf %{buildroot}
 * Mon Jun 20 2016 Aaron Burt <aaron.burt@upsight.com>
 - v0.10.1
 - Source URL -> Hashicorp (Packer authors)
+- Force _prefix to /usr/local
+- Symlink to packer-io to mantain compatibility with earlier RPM
 * Wed Apr 29 2015 dan phrawzty <phrawzty@mozilla.com>
 - init v0.7.5
